@@ -239,7 +239,7 @@ bool DSDIFF::File::save(TagTypes tags, StripTags strip, ID3v2::Version version)
     return false;
   }
 
-  if(strip == StripOthers || strip == StripAll)
+  if(strip == StripOthers)
     File::strip(static_cast<TagTypes>(AllTags & ~tags));
 
   // First: save ID3V2 chunk
