@@ -42,6 +42,8 @@
 #include <wavpackfile.h>
 #include <opusfile.h>
 #include <xmfile.h>
+#include <dsffile.h>
+#include <dsdifffile.h>
 #include <tfilestream.h>
 #include <tbytevectorstream.h>
 #include <cppunit/extensions/HelperMacros.h>
@@ -84,6 +86,8 @@ class TestFileRef : public CppUnit::TestFixture
   CPPUNIT_TEST(testAIFF_2);
   CPPUNIT_TEST(testWavPack);
   CPPUNIT_TEST(testOpus);
+  CPPUNIT_TEST(testDSF);
+  CPPUNIT_TEST(testDSDIFF);
   CPPUNIT_TEST(testUnsupported);
   CPPUNIT_TEST(testCreate);
   CPPUNIT_TEST(testAudioProperties);
@@ -314,6 +318,16 @@ public:
   void testOpus()
   {
     fileRefSave<Ogg::Opus::File>("correctness_gain_silent_output", ".opus");
+  }
+  
+  void testDSF()
+  {
+    fileRefSave<DSF::File>("empty10ms",".dsf");
+  }
+
+  void testDSDIFF()
+  {
+    fileRefSave<DSDIFF::File>("empty10ms",".dff");
   }
 
   void testUnsupported()
