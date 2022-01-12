@@ -17,6 +17,13 @@ if(APPLE)
     set(FRAMEWORK_INSTALL_DIR "/Library/Frameworks" CACHE STRING "Directory to install frameworks to.")
   endif()
 endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++")
+set(CMAKE_CXX_COMPILER "clang++")
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -lc++abi")
+set(CXX_STANDARD_REQUIRED)
+
 if(NOT BUILD_SHARED_LIBS)
   add_definitions(-DTAGLIB_STATIC)
 endif()
